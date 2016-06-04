@@ -14,6 +14,8 @@
 		76CF33A61CFD2C91004CCB4D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76CF33A41CFD2C91004CCB4D /* LaunchScreen.storyboard */; };
 		76CF33B11CFD2C91004CCB4D /* MemeMeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF33B01CFD2C91004CCB4D /* MemeMeTests.swift */; };
 		76CF33BC1CFD2C91004CCB4D /* MemeMeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF33BB1CFD2C91004CCB4D /* MemeMeUITests.swift */; };
+		76CF33CA1CFD2D99004CCB4D /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF33C91CFD2D99004CCB4D /* Meme.swift */; };
+		76CF33CC1CFD2DCB004CCB4D /* MemeMeTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF33CB1CFD2DCB004CCB4D /* MemeMeTextFieldDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		76CF33B71CFD2C91004CCB4D /* MemeMeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MemeMeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		76CF33BB1CFD2C91004CCB4D /* MemeMeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeMeUITests.swift; sourceTree = "<group>"; };
 		76CF33BD1CFD2C91004CCB4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		76CF33C91CFD2D99004CCB4D /* Meme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
+		76CF33CB1CFD2DCB004CCB4D /* MemeMeTextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeMeTextFieldDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +104,8 @@
 				76CF339B1CFD2C91004CCB4D /* AppDelegate.swift */,
 				76CF339D1CFD2C91004CCB4D /* ViewController.swift */,
 				76CF339F1CFD2C91004CCB4D /* Main.storyboard */,
+				76CF33C91CFD2D99004CCB4D /* Meme.swift */,
+				76CF33CB1CFD2DCB004CCB4D /* MemeMeTextFieldDelegate.swift */,
 				76CF33A21CFD2C91004CCB4D /* Assets.xcassets */,
 				76CF33A41CFD2C91004CCB4D /* LaunchScreen.storyboard */,
 				76CF33A71CFD2C91004CCB4D /* Info.plist */,
@@ -193,6 +199,7 @@
 				TargetAttributes = {
 					76CF33971CFD2C91004CCB4D = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = ZH845MTME4;
 					};
 					76CF33AB1CFD2C91004CCB4D = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -257,6 +264,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				76CF339E1CFD2C91004CCB4D /* ViewController.swift in Sources */,
+				76CF33CA1CFD2D99004CCB4D /* Meme.swift in Sources */,
+				76CF33CC1CFD2DCB004CCB4D /* MemeMeTextFieldDelegate.swift in Sources */,
 				76CF339C1CFD2C91004CCB4D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -399,10 +408,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MemeMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.morgan.MemeMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -410,10 +422,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MemeMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.morgan.MemeMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
