@@ -49,8 +49,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewWillAppear(animated)
         
         //Enable camera button only if the device has a camera
-    cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
+        cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
         
+        //Enable Keyboard
         subscribeToKeyboardNotifications()
         
         //configure topTextField
@@ -85,11 +86,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func pickImageFromAlbum(sender: AnyObject) {
-        pickImageFromSourceType(UIImagePickerControllerSourceType.PhotoLibrary)
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        presentViewController(imagePicker, animated: true, completion: nil)
     }
     
     @IBAction func pickImageFromCamera(sender: AnyObject) {
-        pickImageFromSourceType(UIImagePickerControllerSourceType.Camera)
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        presentViewController(imagePicker, animated: true, completion: nil)
     }
     
     func pickImageFromSourceType(source: UIImagePickerControllerSourceType){
@@ -163,14 +169,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func unsubscribeFromKeyboardNotifications(){
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.keyboardWillShow(_:))    , name: UIKeyboardWillShowNotification, object: nil)
     }
     
     func keyboardWillShow(notification: NSNotification){
         //Keyboard must shift view ONLY if bottom Text field is editing
         if bottomTextField.editing {
             view.frame.origin.y = getKeyboardHeight(notification) * -1
+        NSNotificationCenter.defaultCenter().removeObserver(self, name:UIKeyboardWillShowNotification, object: nil)
         }
     }
     
@@ -191,6 +197,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         textField.adjustsFontSizeToFitWidth = true
         textField.textAlignment = NSTextAlignment.Center
     }
+    
     
     func prefillTextFieldsWithDefault(){
         topTextField.text = "TOP"
