@@ -90,12 +90,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         imagePicker.delegate = self
         imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         presentViewController(imagePicker, animated: true, completion: nil)
+        pickImageFromSourceType(UIImagePickerControllerSourceType.PhotoLibrary)
     }
     
     @IBAction func pickImageFromCamera(sender: AnyObject) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         presentViewController(imagePicker, animated: true, completion: nil)
+        pickImageFromSourceType(UIImagePickerControllerSourceType.Camera)
     }
     
     func pickImageFromSourceType(source: UIImagePickerControllerSourceType){
@@ -170,6 +172,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func unsubscribeFromKeyboardNotifications(){
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.keyboardWillShow(_:))    , name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name:UIKeyboardWillShowNotification, object: nil)
     }
     
     func keyboardWillShow(notification: NSNotification){
